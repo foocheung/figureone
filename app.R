@@ -1,5 +1,4 @@
 
-##install_version("shiny", version = "1.0.5")
 library(Biobase)
 library(rintrojs)
 library(ggpubr)
@@ -7,19 +6,9 @@ options(digits=4)
 options(warn=-1)
 library(png)
 library(ggimage)
-####ADD MEAN
-### ADD DELTA TO PLOT
-###
-#library(ggpubr)
-options(digits=4)
-options(warn=-1)
 
-#options(warn=2, error=recover)
-#options(warn=0, error=NULL) 
-library(hexSticker)
 library(ggrepel)
 library(plyr)
-#library(DT)
 library(ggforce)
 library(shiny)
 library(shinydashboard)
@@ -27,27 +16,16 @@ library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(plotly)
-#library(RMySQL)
-#library(d3heatmap)
 library(ggfortify)
 library(readr)
-#library("genefilter")
 library(stats)
 library(shinyjs)
-#library(webshot)
 library(htmltools)
 library(magrittr)
-#source("chooser.R")
 library(gridExtra)
 library(grid)
 library(gtools)
 library(shinyBS)
-library(shinydashboard)
-#library(DT)
-#source("global.R")
-####ADD MEAN
-### ADD DELTA TO PLOT
-###
 
 
 
