@@ -1,4 +1,4 @@
-# figureone
+# A Figure One Web Tool
 
 
 A Figure One Web Tool
