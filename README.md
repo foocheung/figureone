@@ -17,6 +17,6 @@ Example output:
 This web tool is an [open source](http://opensource.org) project, and the source code is available at [https://github.com/foocheung/figureone](https://github.com/foocheung/figureone)
 
 # License
-This web tool is licensed under the [Apache](http://www.apache.org/licenses/LICENSE-2.0) licence. &copy; Foo Cheung (2017)
+This web tool is licensed under the [Apache](http://www.apache.org/licenses/LICENSE-2.0) licence. &copy; Foo Cheung (2018)
 
 
