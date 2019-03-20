@@ -1,3 +1,5 @@
+##libraries that needs to be installed from CRAN or Bioconductor
+
 library(Biobase)
 library(rintrojs)
 library(ggpubr)
@@ -31,9 +33,9 @@ library(shinyBS)
 ui <- function(request) {
   
   dashboardPage(
-    # skin = "yellow",
+   
     
-    
+    #Title
     dashboardHeader(title = "A Figure One Web Tool", titleWidth = 650),
     
     dashboardSidebar(
@@ -46,89 +48,47 @@ ui <- function(request) {
         
         
         menuItem(
-          # id="tem",
-          
+           #Templates
           "Draw From Templates",
           tabName = "Templates",
           icon = shiny::icon("file-pdf-o")
         ),
         
         menuItem(
-          #   id="scra",
+          #scratch
           "Draw From Scratch", tabName = "Figure"),
-        
-        
-        
-        
-        
-        
-        
-        
         status = "primary",
-        
         solidHeader = TRUE
         
       ),
       
-      # div(style="display:inline-block, margin-top: 25px;", selectInput(inputId ="auntps",
-      #             "Step1: Select Number of TimePoints",
-      #             c("",1:10),
-      #             selected="",width = "100%")
-      #     ),
-      
-      
       conditionalPanel(
-        
-        #"input.add > 0",
+        #Timepoints activates sidebar and Draw Button
         condition =   "input.auntps > 0",   
         column(8, align="center", 
                uiOutput("result1"),  
                
                conditionalPanel(
                  
-                 #  condition =   "input.add > 0",  
                  condition =   "input.auntps > 0", 
-                 # condition = "input.auntps > 0",
                  actionButton("goButton3", "Draw Figure!",icon("picture", lib = "glyphicon"), 
                               style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
-                 # actionButton("help2", "Press for instructions"),
                  checkboxInput('adv', 'More Options', FALSE)
                  
                  
-                 #   actionButton("", "Run Analysis", icon("paper-plane"), 
-                 #               style="color: #fff; background-color: #337ab7; border-color: #2e6da4"),
-                 
-                 #  actionButton("rmv", "Remove Row"),
-               ),
+                  ),
                
                uiOutput("result1s"),
                
-               
-               #checkboxInput('rs', 'Restart', FALSE),
-               
-               #conditionalPanel(
-               #  condition = "input.rs == true",
-               #  tags$a(href="javascript:history.go(0)", 
-               #         popify(tags$i(class="fa fa-refresh fa-5x"),
-               #                title = "Reload", 
-               #                content = "Click here to restart the Shiny session and reset all values",
-               #                placement = "right"))
-               ##tags$a(href="https://foocheung.shinyapps.io/figureone",
-               
                HTML('<li><a href="https://foocheung.shinyapps.io/figureone" target="_blank">Start New Drawing</a></li>')
                
-               #)
+             
         ),
-        #################Bookmark button      
+         
         
         column(8, align="center",    
-               # div( style="display:inline-block",actionButton(inputId= "goButton4", "Bookmark", style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
-               #goButton3 
-               # actionButton("goButton3", "Draw Figure!",icon("picture", lib = "glyphicon"), 
                
-               # ),
-               
-               
+               #PDF output and download
                
                checkboxInput('returnpdf', 'Output Plot To PDF?', FALSE),
                
@@ -145,11 +105,9 @@ ui <- function(request) {
                  br(),
                  br()
                ) 
-               #)
                ,
-               # checkboxInput('lb', HTML("<i class='glyphicon glyphicon-pencil fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i>"),"Add Your Title Here"),
                
-               
+               #labels: title, subtitle, captions,xlabels,ylabels
                checkboxInput("lb", "Add Titles and Labels", TRUE),
                conditionalPanel(
                  "input.lb > 0",
@@ -170,11 +128,11 @@ ui <- function(request) {
                conditionalPanel( condition= "input.annt > 0",
                                  align="left",  
                                  uiOutput('ann_tps')
-                                 #  outputOptions(, "ann_tps", suspendWhenHidden = FALSE)
+                                 
                ),
                
                
-               
+               ##Contact info
                br(),br(),
                HTML('<p><center>Further Help ? <br>Contact the developer at <font color="cyan"><br> foo.cheung @ nih . gov </font></center>'),
                br(),br(),br()
@@ -182,23 +140,17 @@ ui <- function(request) {
         )
       )
       
-      #actionButton( "info", icon = shiny::icon("info-circle"),"")
+    )
       
       
     ),
     
-    #),
-    dashboardBody(
+        dashboardBody(
       
       id="headp1",
       tags$head(
-        # tags$head(tags$style(HTML('
-        #  .skin-blue .content-wrapper {
-        #    background-color: white;
-        #  }
-        #'))),
         
-        
+    ##CSS    
         tags$style(type="text/css",
                    ".shiny-output-error { visibility: hidden; }",
                    ".shiny-output-error:before { visibility: hidden; }"
@@ -222,13 +174,8 @@ ui <- function(request) {
         tabItems(
           
           # First tab content
-          
-          
-          
-          
-          
+          #Landing Page with Templates shown
           tabItem(
-            
             
             tabName = "Templates"
             ,
@@ -245,6 +192,8 @@ ui <- function(request) {
                 actionButton("start", "Click Here To Draw From Scratch") ,
                 HTML('</center>')
               ) ,
+              
+              #Templates available
               box(tags$h3(
                 tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%5B%221%22%2C%223%22%5D&a2=%5B%221%22%2C%223%22%2C%229%22%5D&a3=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&a4=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a5=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a6=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&add=6&adv=true&annt=true&auntps=9&b1=%22drug%22&b2=%22draw_arrow%22&b3=%22blood_sample%22&b4=%22point_15%22&b5=%22point_15%22&b6=%22point_15%22&bbb1=%221%22&bbb2=%221%22&bbb3=%222%22&bbb4=%223%22&bbb5=%224%22&bbb6=%225%22&c1=%22Drug%20Treatment%22&c2=%22%22&c3=%22Blood%20Sample%22&c4=%22Microarray%22&c5=%22Flow%20Cytometry%22&c6=%22CBC%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=9&crop_plot_y=5.1&goButton3=28&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rotx=true&shp_col1=%22black%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22blue%22&shp_col6=%22green%22&shp_size1=1.5&shp_size2=2.5&shp_size3=1.5&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_x1=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&start=1&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Day%200%22&timepts2=%22Day%201%22&timepts3=%22Day%202%22&timepts4=%22Day%203%22&timepts5=%22Day%204%22&timepts6=%22Day%205%22&timepts7=%22Day%206%22&timepts8=%22Day%207%22&timepts9=%22Day%208%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22&start=1",target = "_blank",
                        "Template 1"))
@@ -278,7 +227,7 @@ ui <- function(request) {
                      actionButton("help0", "Press for instructions")
               )
             )
-            #)
+            
           ),
           
           
@@ -292,8 +241,7 @@ ui <- function(request) {
                 12,
                 offset = 3,
                 
-                #  conditionalPanel(
-                #        "input.add > 0 ",  
+                 
                 box(
                   
                   
@@ -314,22 +262,13 @@ ui <- function(request) {
               width = 12,
               
               align="center",
-              #        conditionalPanel(
-              #          condition =   "input.add == 0",   
-              
+               ##Interactive help
               box(
                 
                 useShinyjs(),
                 
                 
-                # textOutput("result")
-                width = 12,
-                
-                #  selectInput(inputId ="auntps",
-                ##HTML(" <i class='glyphicon glyphicon-time fa-1x'></i> Select Number of TimePoints"),
-                #                                                                c("",1:20),selected="",width = "50%")
-                
-                
+                  width = 12,
                 
                 id="t2",
                 id="t3",
@@ -341,19 +280,12 @@ ui <- function(request) {
                 actionButton("help2", "Press for instructions",
                              icon("info-sign", lib = "glyphicon"), 
                              style="color: #fff; background-color: #FA9900; border-color: #2e6da4") 
-                #       actionButton("goButton3", "Draw Figure!",icon("picture", lib = "glyphicon"), 
-                #                   style="color: #fff; background-color: #337ab7; border-color: #2e6da4")    
-                #       )
-                
-                
+             
                 
               ),                                                       
-              # ,
-              #  column(12,
-              #         actionButton("help", "Press for instructions")     
-              #  ),
               
               
+              # Add content to diagram
               column(
                 
                 width=12,
@@ -374,14 +306,14 @@ ui <- function(request) {
         )
       )
       )
-    #    )
-    #    )
+
     )
 }
 
-#
+
 
 shinyApp(
+#bookmark drawing
   ui,enableBookmarking = "url",
   server = function(input, output,session) {
     addClass(selector = "body", class = "sidebar-collapse")
@@ -406,52 +338,20 @@ shinyApp(
         removeClass(selector = "body", class = "sidebar-collapse")
         
       }
-      ##  reactiveValuesToList(input)
+     
       session$doBookmark()  
       
     })
-    #addClass(selector = "body", class = "sidebar-collapse")
-    #  observe({ 
-    #    vidurl <- paste0("https://www.youtube.com/embed/jc1aJwoOu0A")   
-    #  })
-    
-    
+   
+    #update url with the features of the drawing
     onBookmarked(function(url) {
       updateQueryString(url)
-      #  if (input$goButton4 > 0){
-      #   showModal(
-      #        urlModal(url, title = "Save this Bookmark URL", subtitle = "")
-      #      ) 
-      #}
+      
       
     })
     
-    # observeEvent(input$goButton4, {
-    #    showModal( 
-    #     urlModal(url, title = "This is the bookmark URL", subtitle = "something")
-    #          
-    #    )
-    #  })
     
-    
-    
-    
-    #     observeEvent(input$info, {
-    #       introjs(session, options = list(steps = info()))
-    #     })
-    #     
-    #     info <- reactive(data.frame(element=c("#headp1"), 
-    #                                   intro =c("<h1>A Figure One Web Tool</h1><BR>
-    #                                              This tool allows you to
-    #                                   
-    # "
-    # ),
-    #                                   
-    #                                   
-    #                                   position = "bottom"))
-    #     
-    #     ###Page 1
-    
+    #Interactive Help
     observeEvent(input$help0, {
       introjs(session, options = list(steps = steps()))
     })
@@ -460,21 +360,6 @@ shinyApp(
                                  intro =c("Select one of the \"Templates\" <BR> or <BR> Select \"Draw From Scratch\""),
                                  
                                  position = "bottom"))
-    
-    
-    
-    
-    # observeEvent(input$help, {
-    #   introjs(session, options = list(steps = steps1()))
-    # })
-    # 
-    #     steps1 <- reactive(data.frame(element=c("#auntps", "#auntps"), 
-    #                               intro =c("Use the Slider To Select how many Timepoints you require<BR>",
-    #                                        "Then Press \"Add Row\" to start the Drawing process"
-    #                                        ),
-    #                               
-    #                               
-    #                               position = "bottom"))
     
     
     
@@ -525,25 +410,20 @@ shinyApp(
     position = "bottom"))
     
     
-    
+    #Display how many timepoints bering used
     output$result1 <- renderUI({
       req(input$auntps)
-      #    addItem(1)
-      #  ttt3<-paste0('input$bbb',i,sep="")
-      #cnt <- as.numeric(as.character(c(eval(parse(text=ttt3))))) * 14
-      #  cnt <- as.numeric(as.character(c(eval(parse(text=ttt3)))))  * 14
-      
+     
       
       
       HTML(paste("<center><i> <i class='glyphicon glyphicon-time fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i> <b> ",
                  "<font color='red'>", input$auntps,"</font>",
                  'TimePoints Selected', 
                  sep=' '))
-      # div(style="display:inline-block", sliderInput(inputId="crop_plot_y", label = "Crop Y axis", min=3, max=18, step = 0.1, value=input$add , width=100, ticks=F))
-      
+         
       
     })
-    
+    #Button to crop the drawing
     output$result1s <- renderUI({
       req(input$auntps)
       
@@ -551,19 +431,15 @@ shinyApp(
         tagList(
           
           div(id="crop_plot",style="display:inline-block", sliderInput(inputId="crop_plot", label = "Crop X axis", min=1, max=input$auntps, step = 1,value=input$auntps, width=100, ticks=F)),
-          #      div(style="display:inline-block", sliderInput(inputId="crop_plot_y", label = "Crop Y axis", min=1, max=18, step = 0.1, value=input$add , width=100, ticks=F))
           div(id="crop_plot_y",style="display:inline-block", sliderInput( inputId="crop_plot_y", label = "Crop Y axis", min=1, max=18, step = 0.1, value=4 , width=100, ticks=F))    
         )
       )
     })
     
-    #,
-    #   div(style="display:inline-block", sliderInput(inputId="crop_plot_y", label = "Crop Y axis", min=3, max=18, step = 0.1,value=input$add, width=100, ticks=F))
-    #)
     
     
     
-    
+ #List of groups for drop down menu   
     
     drug_list<-c("drug")
     vacc_list<-c("syringe")
@@ -573,12 +449,8 @@ shinyApp(
     transcriptomics_list<-c("chip","RNA_Seq")
     proteomics_list<-c("proteomics", "phage",  "heatmap" )
     cells_list<-c("flow_cytometry","flow_cytometry2","blood_cells" )
-    #  misc_list<-c( "mouse", "researcher", "vectors", "smallmolecules", "bioinformatics", "antibodies", "assays", 
-    #                "cell_lines","epigenomics","serology","microbiome" ,"blank")
-    misc_list<-c("blank","tick", "cross","insert_text")
+     misc_list<-c("blank","tick", "cross","insert_text")
     shapes_list<-c( "point_1","point_2","point_3","point_4","point_5","point_6","point_7","point_8","point_9","point_10","point_11","point_12","point_13","point_14","point_15","point_16", "point_17","point_24")
-    
-    #tool_list<-c("line","tick", "cross","insert_text","draw_arrow","highlight", "draw_arrow2", "draw_arrow3", "draw_arrow4","screening","screening2","screening3","screening4","draw_arrow6","dbl_arrow","diag_arrowl","crossover","end","point")
     tool_list<-c("line","draw_arrow", "draw_arrow2", "screening","crossover","end","highlight")
     
     
@@ -595,36 +467,30 @@ shinyApp(
     
     
     tgp<-reactive({
-      # req(input()$auntps)
-      #myData <- filedata()$myData
+    
       myData <- dataM()$data
       tps<- as.data.frame(table(myData$TimePoint))
       tpg1<- tps %>% filter(Freq > 0) %>% arrange(desc(Freq) )
       colnames(tpg1)<-c("TimePoint", "Frequency")
       
       timepoints<-tpg1[1]
-      #mxtp<-input$auntps
-      # mxtp<-25
+      
       return(list("timepoints"=timepoints, "mxtp"=mxtp))
     })
     
     
+    ##Plot diagram
     output$web3 <- renderUI( {
       
       tagList(
         
         plotOutput('plot2'
-                   #,
-                   #click = "plot_click",
-                   #dblclick = "plot_dblclick",
-                   #hover = "plot_hover",
-                   #brush = "plot_brush"
+           
         )
-        #,
-        #    verbatimTextOutput("info")
+        
       )
       
-      #  })
+    
       
     }
     )
@@ -634,7 +500,7 @@ shinyApp(
     
     
     
-    ##  setBookmarkExclude("add")
+    #Add items to drawing and offer coordinates
     
     addItem <- function(id) {
       
@@ -642,22 +508,12 @@ shinyApp(
       
       
       
-      
-      # lb<<-eval(parse(text=paste0("input$b", id,  sep="")))
-      #  lb1<<-eval(as.name(lb))
+
       insertUI(
         
         selector = "#add",
         where ="beforeBegin",
         tagList(
-          #    fluidRow(
-          
-          #   fluidRow(
-          
-          #  column(
-          #    12,
-          #offset = 1,
-          
           
           box(
             collapsible=FALSE,
@@ -666,7 +522,6 @@ shinyApp(
             solidHeader=TRUE,
             title=paste0("#", id, sep=''),
             width=2,
-            #height="700px",
             
             align = 'left',
             
@@ -680,12 +535,9 @@ shinyApp(
                      id, sep='')
               
             ),
-            #   selectizeInput(paste0('a', id ) , label=HTML("<i class='glyphicon glyphicon-time fa-1x' style='color: #FFD700;  border-color: #337ab7'></i>"), choices =c(tgp()$timepoint),selected=c(tgp()$timepoint[1]),multiple = TRUE,width="200px"),
             selectizeInput(paste0('a', id ) , label=HTML("<i class='glyphicon glyphicon-time fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i>"), choices =c(1:25),selected=c(tgp()$timepoint[1],tgp()$timepoint[2]),multiple = TRUE,width="200px"),
             div(style="display:inline-block;vertical-align:top",selectizeInput(
-              #width="100px",#
               paste0('b', id  ) , 
-              #paste0('Row', id, "Image"), 
               label=HTML("<i class='glyphicon glyphicon-picture fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da''></i>"),
               choices =  
                 list(
@@ -717,8 +569,6 @@ shinyApp(
               
               paste0('bbb', id  ) , 
               "Row Position",
-              #  paste0('Row', id, "Position"), 
-              #  label=HTML("<i class='glyphicon glyphicon-pencil fa-1x'></i>"), paste0('Row', id, "Position"),
               choices =   c(2.5/10,3.3/10,5/10,6.6/10,7.5/10,10/10,12.5/10,15/10,17.5/10,20/10,22.5/10,25/10,27.5/10,30/10,
                             32.5/10,35/10,37.5/10,40/10,42.5/10,45/10,47.5/10, 50/10,
                             52.5/10, 55/10,57.5/10,60/10,62.5/10,65/10,67.5/10,70/10,
@@ -735,69 +585,35 @@ shinyApp(
             
             conditionalPanel(
               condition = "input.adv == true",
-              ## condition = "paste0('b', id  ) == 'point_1'",
               sliderInput(inputId= paste0('shp_x', id),label = 'Nudge X:', min=0, max = 20, value=0),
               sliderInput(inputId= paste0('shp_size', id),label = 'size:', min=1, max = 5, value=1.5,step=0.5),
               selectizeInput(inputId= paste0('shp_col', id),label = 'color:', choices=c("red","blue", "black", "green","orange", "yellow", "white"), "black"),
               checkboxInput(inputId= paste0('rev_col',id), 'Reverse Colors', FALSE)
             )
             
-            # ),
-            # conditionalPanel(
-            #   condition = "input.shp_size1 >  0",
-            # #  print(parse(text ='input.shp_size1')),
-            # #  print(text ='input.shp_size1')),
-            #   #condition ="paste0(input.shp_size,1,sep='') ==  3",
-            #   print('input.shp_size1'),
-            #   checkboxInput(inputId= paste0('test',id), 'TEST', TRUE)
-            #   
-            # )
             
             
             
             
-            
-            
-            #     ))
             
             
             
           )
         )
-        #  ,
-        #  
-        #    
-        #   
-        
         
       )
     }
     
     
-    
+    #Restore drawing from bookmark
     observeEvent(input$add, {
       
       addItem(input$add)        
     }
     , ignoreInit = TRUE)
     
-    
-    
-    
-    
-    #observeEvent(input$rmv, {
-    #  removeUI(
-    
-    #  selector = "div:has(> #bx3)",
-    # selector = "div:has(> #a1)"
-    
-    #  )
-    #})
-    
-    
     onRestore(function(state) {
       req(input$add)
-      ##    for(i in 1:input$add ) {    
       for (i in seq_len(input$add)) {
         addItem(i)
         
@@ -805,7 +621,7 @@ shinyApp(
     }
     )
     
-    
+    #label for Timepoints
     output$ann_tps<-renderUI({
       if (is.null(input$auntps)){
         
@@ -863,7 +679,7 @@ shinyApp(
     
     dddd<-reactive({
       
-      # rrrr<<-input$addtp
+      
       library('foreach')
       req(input$gotp)
       
@@ -877,7 +693,7 @@ shinyApp(
       }
       
       
-      #  testt<<-  i_squared
+      
       
       updateSelectInput(session, "inSelect2",
                         label = paste("Select label", c_label),
@@ -897,12 +713,9 @@ shinyApp(
     
     tgp<-reactive({
       myData <- dataM()$data
-      #myData <- filedata()$myData
       
       tps<-matrix(1:input$auntps)
       
-      #   tps<- as.data.frame(table(myData$TimePoint))
-      # tpg1<<- tps %>% filter(Freq > 0) %>% arrange(desc(Freq) )
       colnames(tps)<-c("TimePoint")
       
       timepoints<-tps
@@ -948,10 +761,7 @@ shinyApp(
     ##########################START FILTERED TAB
     output$filter_sampleII <- renderUI({
       
-      # aaaa<- tgp()$timepoint
-      #aaaa<- sort(as.numeric(unlist(t(aaaa))))
       
-      #  aaaa<- sort(as.numeric(unlist(t(tgp()$timepoint))))
       tpg1<-time_p_g1()$tpg1
       tagList(
         box(
@@ -961,10 +771,7 @@ shinyApp(
             inputId = "fil_by_tp",
             label = "Filter By TimePoint",
             c(sort(as.numeric(unlist(t(tgp()$timepoint))))),
-            # c(0,1,7,30,37,180,187,210,360),
-            #selected = c(t(aaaa)),
             selected = c(sort(as.numeric(unlist(t(tgp()$timepoint))))),
-            # selected=c(0,1,7,30,37,180,187,210,360),
             selectize = TRUE,
             multiple = TRUE
             
@@ -991,49 +798,9 @@ shinyApp(
       inFile3 <- input$file3
       
       myData<-read.csv(inFile$datapath, header=T, fill=TRUE, sep="\t")
-      # myData<-myData[!apply(myData == "", 1, all),]
-      
-      
-      
-      #    if (input$idtp > 0){
-      ###   rownames(myData)<-(make.names(paste(myData$Sample.ID,myData$TimePoint,sep="_"),unique=TRUE))
-      #      }
-      #    else{
-      #rownames(myData)<-(make.names(paste(myData$Sample.ID,sep="_"),unique=TRUE))
-      # rownames(myData)<-(make.names(paste(myData$TimePoint,myData$Sample.ID,sep="_"),unique=TRUE))
       
       myData <- cbind(myData, "SampleID"=1:nrow(myData) ) 
       rownames(myData)<-myData$SampleID
-      ###tttt<-myData
-      #    }
-      
-      #    if ((is.null(input$file2))){
-      
-      #    }
-      #   else{
-      #      tofilter<-read.csv(inFile2$datapath, header=F, fill=TRUE, sep="\t")
-      #      coln<-t(tofilter)
-      #      coln2<-c("Sample.ID", "Groups")
-      #      coln3<-c(coln, coln2) 
-      #      myData<-myData[,colnames(myData)%in%coln3] 
-      #    }
-      
-      
-      
-      #    if ((is.null(input$file3))){
-      
-      #    }
-      #    else{
-      #      rtofilter<-read.csv(inFile3$datapath, header=F, fill=TRUE, sep="\t")
-      #      rown<-t(rtofilter)
-      #      
-      #      myData<-myData[grep(
-      #        paste(rown, collapse = '|'),
-      #        rownames(myData),
-      ##        ignore.case = TRUE
-      #      ),]
-      
-      #      }
       
       
       return(list("myData"=myData))
@@ -1080,28 +847,19 @@ shinyApp(
     output$plot2 <- renderPlot({
       
       
-      
+      #Plot diagram
       
       if (is.null(input$goButton3) |input$goButton3 == 0 |input$goButton3 == 'FALSE')
         return(NULL)
-      # require(input$add)
-      #  require(dataM()$data)
       
       
       isolate ({
         
-        
-        
-        #   tttt<-input$add
-        
-        
-        #myData3 <-filedata()$myData 
-        #myData3 <-dataM()$data
-        
-        
+
+        #set up canvas
         blank = sample("./www/blank.png")
         
-        #  test<-myData3 
+      
         p <-
           ggplot(
             
@@ -1113,36 +871,31 @@ shinyApp(
           theme_bw()+
           theme(
             
-            ###PUT BACK WITH BUTTON    
+            
             axis.ticks.y = element_blank(),
             axis.text.y = element_blank(),
             text = element_text(size = 13, face = "bold"),
-            #  panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-            #  panel.background = element_blank(), axis.line = element_line(color = "black"),
+            
             plot.title = element_text(size = 12, face = "bold"),
-            #  panel.border = element_blank(),
-            # panel.grid = element_line(color = "grey80"),
-            #   panel.grid.major.y = element_line(color = "grey80"),
+            
             panel.grid.minor.y = element_blank(),
             panel.grid.major.y =element_blank(),
             
-            #    panel.grid.minor.x = element_blank(),
-            #    panel.grid.major.x =element_blank(),
-            #  axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5),
+           
             
             axis.title.x = element_text(margin = margin(t = 20)) ,
             axis.text.x.top = element_text(vjust = 0.5)
             
           )  
         
-        ###   p <- p +  scale_x_continuous(breaks = 1:input$auntps
+      
         
         if (input$rotx  >0 ){
-          #    p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5))
+       
           p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0))
         }
         
-        
+        #Add captions,title,subcaptions
         
         p <-  p +     ggtitle(input$title2) +
           
@@ -1152,17 +905,10 @@ shinyApp(
                caption = wrapper(input$captions, width = 100), 
                x = input$xlab, y = input$ylab) 
         
-        #if (input$rotx == TRUE ){
-        
-        #P <- p +  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5)) 
-        #}
+       
         
         
-        
-        ### tttt<-input$b
-        
-        
-        
+        #Shapes in www folder
         cross = sample("./www/cross.png")
         
         tick = sample("./www/tick.png")
@@ -1249,14 +995,10 @@ shinyApp(
         point_17= sample("./www/point_17.png")
         point_24= sample("./www/point_24.png")
         
-        #     red= sample("./www/red.png")
-        #      yellow= sample("./www/yellow.png")
-        #      blue= sample("./www/blue.png")
-        #      purple= sample("./www/purple.png")
-        #      green= sample("./www/green.png")
+      
         
         
-        
+        #parse input to create drawing
         library('foreach')
         
         
@@ -1266,16 +1008,16 @@ shinyApp(
         
         if (input$add == 0){
           
-          # return(NULL)
+         
         }
         else  if (input$add > 0){
           
           
           withProgress(message = 'Parsing Data', value = 0, {
             n<-input$add
-            #  foreach (i=1:input$add, .combine=c) %do% { 
+           
             foreach (i=1:input$add, .combine=c) %do% { 
-              #  foreach (i=1:input$add, .combine=c) %do% { 
+             
               
               
               
@@ -1283,14 +1025,9 @@ shinyApp(
               ee<-eval(parse(text = paste0('input$b', i,sep="")))
               
               tt<-paste0('input$a',i,sep="")
-              #  xxxxxx<<-input$auntps
-              #  xxx<<-c(eval(parse(text=tt)))
-              #  xxx<<-  filter(t(xxx) %in% c(3,4,5))
-              # # expr[expr$cell_type %in% c("hesc", "bj fibroblast"), ]
-              #  
-              #  tty<-paste0('input$bbb',i,sep="")
+             
               ttt3<-paste0('input$bbb',i,sep="")
-              #cnt <- as.numeric(as.character(c(eval(parse(text=ttt3))))) * 14
+              
               cnt <- as.numeric(as.character(c(eval(parse(text=ttt3)))))  * 14
               ff<-paste0('input$c',i,sep="")
               ss<-paste0('input$shp_x', i, sep="") 
@@ -1300,15 +1037,8 @@ shinyApp(
               
               
               
-              # print(ee)
-              # print(tt)
-              # print(ttt3)
-              # print(cnt)
-              # print(ff)
-              #  print (ee)
-              ## im<-eval(as.name(ee))
+             
               
-              #print(ee)
               if (is.null(ee))
                 req(eval(as.name(ee)) > 0 )
               
@@ -1320,7 +1050,7 @@ shinyApp(
               if (ee == 'insert_text'){ 
                 df<-  data.frame(x=factor(as.character(c(eval(parse(text=tt))))), y=cnt )  
                 foreach (i=1:length(df$x), .combine=c) %do% { 
-                  # p <- p +     annotate("label", x=as.numeric(as.character(df$x[i])), y=cnt + 1.8, label=eval(parse(text=ff)), color = eval(parse(text=sc)), fontface = "bold" )
+                 
                   p <- p +     annotate("label", x=as.numeric(as.character(df$x[i])), y=cnt , label=eval(parse(text=ff)), color = eval(parse(text=sc)), fontface = "bold" )
                   
                 }
@@ -1447,50 +1177,26 @@ shinyApp(
                   p<- p + 
                     annotate(geom="segment",x=as.numeric(as.character(df$x[i]))+eval(parse(text=ss))/10, color=eval(parse(text=sc)), size=1 , xend=as.numeric(as.character(df$x[i]))+0.7,
                              y=cnt,yend=cnt + eval(parse(text=si)) ,arrow = arrow(length = unit(0.25, "cm"))) 
-                  #+
-                  #   annotate(geom="segment",x=as.numeric(as.character(df$x[i]))+eval(parse(text=ss))/10, color=eval(parse(text=sc)), size=1, xend=as.numeric(as.character(df$x[i]))+0.7,
-                  #            y=cnt,yend=cnt -eval(parse(text=si)),arrow = arrow(length = unit(0.25, "cm"))) 
-                  
+                                   
                 }
               }
               
               
               
               
-              ####NEED TO ROTATE THE SUBJECTS SO THAT ITS SAME ANGLE AS SYRINGES
+              
               else if (ee == 'screening3'){
                 df<-  data.frame(x=factor(as.character(c(eval(parse(text=tt))))), y=cnt )    
                 foreach (i=1:length(df$x), .combine=c) %do% { 
                   
                   
                   
-                  # print(as.numeric(as.character(df$x[i]))-0.2) 
-                  # print(as.numeric(as.character(df$x[i])) -2.4 )
-                  # print(cnt +eval(parse(text=ss))*2)
-                  # print(cnt  + eval(parse(text=si))*7 -1.4)
-                  
-                  
+               
                   
                   p<- p + 
                     
-                    # annotate(geom="segment",
-                    #           x=as.numeric(as.character(df$x[i])) +0.2, 
-                    #           color=eval(parse(text=sc)), size=1 , 
-                    #           xend=as.numeric(as.character(df$x[i]))+1,
-                    #           y= cnt  +eval(parse(text=ss))*2,
-                    #           yend=cnt +eval(parse(text=si))*7 -1.7,##start forward
-                    #           arrow = arrow(length = unit(0.25, "cm"))) +
                     
-                    
-                    # annotate(geom="segment",
-                  #        x=as.numeric(as.character(df$x[i]))-0.2, 
-                  #        color=eval(parse(text=sc)), size=1 , 
-                  #        xend=as.numeric(as.character(df$x[i])) -1,
-                  #        y= cnt +eval(parse(text=ss))*2 ,
-                  #        yend=cnt + eval(parse(text=si))*7 -1.7 ,
-                  #        arrow = arrow(length = unit(0.25, "cm"))) +
-                  # 
-                  
+    
                   
                   annotate(geom="segment",
                            x=as.numeric(as.character(df$x[i]))-0.2 , 
@@ -1559,7 +1265,7 @@ shinyApp(
                   p<- p + 
                     
                     
-                    ###VERY NICE ROTATION  
+                    
                     annotate(geom="segment",
                              x=as.numeric(as.character(df$x[i])) +0.2, 
                              color=eval(parse(text=sc)), size=1 , 
@@ -1571,14 +1277,7 @@ shinyApp(
                     
                     
                     
-                    # annotate(geom="segment",
-                    #          x=as.numeric(as.character(df$x[i]))-0.2, 
-                    #          color=eval(parse(text=sc)), size=1 , 
-                    #          xend=as.numeric(as.character(df$x[i])) -1,
-                    #          y= cnt +eval(parse(text=ss))*2 ,
-                    #          yend=cnt + eval(parse(text=si))*7 -1.7 ,
-                    #          arrow = arrow(length = unit(0.25, "cm"))) +
-                  # 
+                   
                   annotate(geom="text", x=0.1, y=cnt, label=eval(parse(text=ff)) ,color="black", parse=FALSE, fontface=2)
                   
                   
@@ -1598,9 +1297,7 @@ shinyApp(
                 
                 
                 foreach (i=1:length(x), .combine=c) %do% { 
-                  # if (i > input$auntps){
-                  #   next()
-                  # } 
+           
                   foreach (j=1:length(cnt), .combine=c) %do% { 
                     
                     
@@ -1636,8 +1333,7 @@ shinyApp(
                       
                     }
                     
-                    
-                    #  print(paste0(i,j,sep=""))
+                   
                     p<- p + 
                       
                       geom_image(
@@ -1645,26 +1341,14 @@ shinyApp(
                                         y=cnt[j]), aes(x=x,y=y) , image=eval(parse(text=sim)) ,size=eval(parse(text=si))/40) 
                     
                     
-                    
-                    # annotate(geom="point",
-                    #          x=as.numeric(as.character(x[i])), 
-                    #          
-                    #          color=eval(parse(text=sc)),
-                    #          fill=eval(parse(text=sc)),
-                    #          size=eval(parse(text=si))*2,
-                    #          
-                    #          y=cnt[j]  ,
-                    #          
-                    #          shape=as.numeric(shp)+1)  
+               
                     
                     
                   }
                   
                   
                 }
-                #   p<- p+ annotate(geom="segment",x=1,xend=input$auntps,y=cnt,yend=cnt,color="black", alpha=0.05,linetype="dashed" ) +
-                #     annotate(geom="text", x=0.1, y=cnt, label=j ,color="black", parse=FALSE, fontface=2, color = "white", fontface = "bold")
-                p<- p+ annotate(geom="segment",x=1,xend=input$auntps,y=cnt,yend=cnt,color="black", alpha=0.05,linetype="dashed" ) +
+                  p<- p+ annotate(geom="segment",x=1,xend=input$auntps,y=cnt,yend=cnt,color="black", alpha=0.05,linetype="dashed" ) +
                   annotate(geom="text", x=-2-input$sp_lab, y=cnt, label=eval(parse(text=ff)),color="black", parse=FALSE, fontface=2)
                 
                 
@@ -1688,7 +1372,7 @@ shinyApp(
                     
                     p<- p + 
                       annotate(geom="segment",
-                               # annotate(geom="curve",
+                             
                                x=as.numeric(as.character(x[i]))+eval(parse(text=si))/30*2, 
                                color=eval(parse(text=sc)), size=1,
                                xend=as.numeric(as.character(x[i+1]))-eval(parse(text=si))/30*2,
@@ -1698,7 +1382,7 @@ shinyApp(
                       
                       
                       annotate(geom="segment",
-                               #annotate(geom="curve",
+                               
                                xend=as.numeric(as.character(x[i]))+eval(parse(text=si))/30*2, 
                                color=eval(parse(text=sc)), size=1,
                                x=as.numeric(as.character(x[i+1]))-eval(parse(text=si))/30*2,
@@ -1741,7 +1425,7 @@ shinyApp(
                 foreach (i=1:length(x), .combine=c) %do% { 
                   foreach (j=1:length(cnt), .combine=c) %do% { 
                     
-                    #  print(paste0(i,j,sep=""))
+                
                     p<- p + 
                       annotate(geom="point",
                                x=as.numeric(as.character(x[i])), 
@@ -1862,16 +1546,16 @@ shinyApp(
         
         
         
-        ###NEEDS TO BE ADJUST TO FIT LONG DIAG
+        
         start_rec <- as.numeric(input$crop_plot_y) *  10 +20
-        #start_rec <- 10 *  10 +20
+        
         end_rec <- start_rec + start_rec * .25
         
         
         
         p<- p+   scale_y_reverse(limits=c(end_rec,0  ) )
         
-        #####  print(ggplot_build(p)$data)
+       
         
         aval<-list()
         for(i in 1:input$auntps) {
@@ -1891,9 +1575,7 @@ shinyApp(
         
         
         
-        ### ALSO NEEDS TO BE ADJUST TO FIT LONG DIAG *** 2 places needs to be adjusted
-        #  p <-p +  scale_x_discrete(labels=aval, position = "top")  +  coord_cartesian(xlim=c(-4.5,input$crop_plot,expand = FALSE), ylim=c(3, input$crop_plot_y*15))
-        p <-p +  scale_x_discrete(labels=aval, position = "top")  +  coord_cartesian(xlim=c(-3.5-input$sp_lab,input$crop_plot,expand = FALSE), ylim=c(3, input$crop_plot_y*15))   
+              p <-p +  scale_x_discrete(labels=aval, position = "top")  +  coord_cartesian(xlim=c(-3.5-input$sp_lab,input$crop_plot,expand = FALSE), ylim=c(3, input$crop_plot_y*15))   
         
         
         withProgress(message = 'Printing plot', value = 0, {
@@ -1907,36 +1589,13 @@ shinyApp(
       if(input$returnpdf){
         pdf("plot.pdf", width=as.numeric(input$w), height=as.numeric(input$h))
         print(p)
-        ## print (sticker(p,
-        ##                package="", p_size=8, s_x=1, s_y=1.1, s_width=1.2, s_height=2 ,
-        ##                h_color="#ff9966", h_fill="white", p_color = "#4E94B5"))
-        #,
-        #       filename="baseplot.png"))
-        
+           
         dev.off()
       }
       
     })
     
     
-    
-    
-    # output$info <- renderPrint({
-    #   
-    #     print(ggplot_build(plot2()$data))
-    #   # With base graphics, need to tell it what the x and y variables are.
-    #  ## nearPoints(ggplot_build(plot2()$p)$data), input$plot_click, xvar = "x", yvar = "y")
-    #   # nearPoints() also works with hover and dblclick events
-    # })
-    # 
-    # 
-    # 
-    
-    # ttt3<-paste0('input$bbb',i,sep="")
-    # cnt <- as.numeric(as.character(c(eval(parse(text=ttt3))))) * 14   
-    # tt<-paste0('input$a',i,sep="")     
-    # df<-  data.frame(x=factor(as.character(c(eval(parse(text=tt))))), y=cnt )
-    # 
     
     
     
@@ -1966,7 +1625,7 @@ shinyApp(
 
     
     
-    
+    #download pdf file
     
     output$pdflink <- downloadHandler(
       filename <- "myplot.pdf",
@@ -1975,8 +1634,7 @@ shinyApp(
       }
     )
     
-    
-    ###################################
+
     
     
     
