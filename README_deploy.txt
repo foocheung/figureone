@@ -48,6 +48,9 @@ Start an R session using RStudio and run these lines:
 shiny::runGitHub("figureone", "foocheung")  
 This command will download the code from GitHub to a temporary directory of your computer and then launch the figureone app in the web browser. Once the web browser was closed, the downloaded code would be deleted from your computer. Next time when you run this command in RStudio, it will download the source code from GitHub to a temporary directory again.
 
+Downloading https://github.com/foocheung/figureone/archive/master.tar.gz
+
+Listening on http://127.0.0.1:5324
 
 
 #############################################################################################
