@@ -33,7 +33,7 @@ library(shinyBS)
 ui <- function(request) {
   
   dashboardPage(
-   
+    
     
     #Title
     dashboardHeader(title = "A Figure One Web Tool", titleWidth = 650),
@@ -48,7 +48,7 @@ ui <- function(request) {
         
         
         menuItem(
-           #Templates
+          #Templates
           "Draw From Templates",
           tabName = "Templates",
           icon = shiny::icon("file-pdf-o")
@@ -76,15 +76,15 @@ ui <- function(request) {
                  checkboxInput('adv', 'More Options', FALSE)
                  
                  
-                  ),
+               ),
                
                uiOutput("result1s"),
                
                HTML('<li><a href="https://foocheung.shinyapps.io/figureone" target="_blank">Start New Drawing</a></li>')
                
-             
+               
         ),
-         
+        
         
         column(8, align="center",    
                
@@ -140,180 +140,180 @@ ui <- function(request) {
         )
       )
       
-    )
-      
-      
-    ),
     
-        dashboardBody(
+  
+    
+  ),
+  
+  dashboardBody(
+    
+    id="headp1",
+    tags$head(
       
-      id="headp1",
-      tags$head(
-        
-    ##CSS    
-        tags$style(type="text/css",
-                   ".shiny-output-error { visibility: hidden; }",
-                   ".shiny-output-error:before { visibility: hidden; }"
-                   
-        ),
-        tags$style(HTML("
-                        @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
-                        ")),
-        
-        tags$script(
-          HTML("
-               Shiny.addCustomMessageHandler ('hide',function (selector) {
-               $(selector).parent().slideUp();
-               });"
+      ##CSS    
+      tags$style(type="text/css",
+                 ".shiny-output-error { visibility: hidden; }",
+                 ".shiny-output-error:before { visibility: hidden; }"
+                 
+      ),
+      tags$style(HTML("
+                      @import url('//fonts.googleapis.com/css?family=Lobster|Cabin:400,700');
+                      ")),
+      
+      tags$script(
+        HTML("
+             Shiny.addCustomMessageHandler ('hide',function (selector) {
+             $(selector).parent().slideUp();
+             });"
           )
         )
-        ),
+      ),
+    
+    fluidRow(
       
-      fluidRow(
-        
-        tabItems(
+      tabItems(
+        #
+        # First tab content
+        #Landing Page with Templates shown
+        tabItem(
           
-          # First tab content
-          #Landing Page with Templates shown
-          tabItem(
+          tabName = "Templates"
+          ,
+          
+          column(
+            12,
+            align="center",
             
-            tabName = "Templates"
+            box(
+              width = 12,
+              HTML('<center>'),
+              HTML('<H1> A Figure One Web Tool</H1>'),
+              HTML('<p>Select A Template Below Or Draw From Scratch </p>') ,
+              actionButton("start", "Click Here To Draw From Scratch") ,
+              HTML('</center>')
+            ) ,
+            
+            #Templates available
+            box(tags$h3(
+              tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%5B%221%22%2C%223%22%5D&a2=%5B%221%22%2C%223%22%2C%229%22%5D&a3=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&a4=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a5=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a6=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&add=6&adv=true&annt=true&auntps=9&b1=%22drug%22&b2=%22draw_arrow%22&b3=%22blood_sample%22&b4=%22point_15%22&b5=%22point_15%22&b6=%22point_15%22&bbb1=%221%22&bbb2=%221%22&bbb3=%222%22&bbb4=%223%22&bbb5=%224%22&bbb6=%225%22&c1=%22Drug%20Treatment%22&c2=%22%22&c3=%22Blood%20Sample%22&c4=%22Microarray%22&c5=%22Flow%20Cytometry%22&c6=%22CBC%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=9&crop_plot_y=5.1&goButton3=28&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rotx=true&shp_col1=%22black%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22blue%22&shp_col6=%22green%22&shp_size1=1.5&shp_size2=2.5&shp_size3=1.5&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_x1=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&start=1&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Day%200%22&timepts2=%22Day%201%22&timepts3=%22Day%202%22&timepts4=%22Day%203%22&timepts5=%22Day%204%22&timepts6=%22Day%205%22&timepts7=%22Day%206%22&timepts8=%22Day%207%22&timepts9=%22Day%208%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22&start=1",target = "_blank",
+                     "Template 1"))
+              ,
+              tags$iframe(style="height:270px; width:50%; scrolling:no; overflow:hidden",   src="./template1.pdf#zoom=50&view=FitH&toolbar=0")
+              
+            ),
+            box(tags$h3(
+              tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%221%22&a10=%221%22&a11=%2210%22&a2=%5B%222%22%2C%225%22%2C%228%22%5D&a3=%5B%222%22%2C%225%22%2C%228%22%2C%2210%22%5D&a4=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a5=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%222%22%2C%225%22%2C%227%22%2C%2210%22%5D&a9=%221%22&add=11&adv=true&annt=true&auntps=11&b1=%22screening%22&b10=%22blank%22&b11=%22end%22&b2=%22syringe%22&b3=%22draw_arrow%22&b4=%22blood_sample%22&b5=%22point_15%22&b6=%22point_15%22&b7=%22point_15%22&b8=%22point_15%22&b9=%22blank%22&bbb1=%220.5%22&bbb10=%220.75%22&bbb11=%220.5%22&bbb2=%5B%220.25%22%2C%220.75%22%5D&bbb3=%5B%220.25%22%2C%220.75%22%5D&bbb4=%221.25%22&bbb5=%221.75%22&bbb6=%222.25%22&bbb7=%222.75%22&bbb8=%223.25%22&bbb9=%220.25%22&c1=%22%22&c10=%22Placebo%22&c11=%22%22&c2=%22%22&c3=%22%22&c4=%22Blood%20Sample%22&c5=%22Flow%20Cytometry%22&c6=%22RNA-Seq%22&c7=%22Complete%20Blood%20Count%22&c8=%22Neutralizing%20Titers%22&c9=%22HSV-529%22&captions=%22NIAID%20Protocol%20Number%3A%20%2013-I-0172%22&crop_plot=11&crop_plot_y=3.3&goButton3=22&h=6&help0=0&help2=0&lb=true&returnpdf=false&rev_col1=false&rev_col10=false&rev_col11=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&shp_col1=%22black%22&shp_col10=%22black%22&shp_col11=%22black%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22green%22&shp_col6=%22black%22&shp_col7=%22red%22&shp_col8=%22blue%22&shp_col9=%22black%22&shp_size1=1&shp_size10=1.5&shp_size11=1.5&shp_size2=1.5&shp_size3=2&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1.5&shp_x1=0&shp_x10=0&shp_x11=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=-1&start=1&subtitle=%22%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day360%22&timepts11=%22END%22&timepts2=%22Day0%22&timepts3=%22Day1%22&timepts4=%22Day7%22&timepts5=%22Day30%22&timepts6=%22Day37%22&timepts7=%22Day60%22&timepts8=%22Day180%22&timepts9=%22Day187%22&title=%22Phase%20I%20Study%20of%20the%20Safety%20of%20a%20Replication-Defective%20Herpes%20Simplex%20Virus-2%20Vaccine%2C%20HSV529%2C%20in%20Adults%20Aged%2018%20to%2040%20Years%20With%20or%20Without%20HSV%20Infection%22&w=8&xlab=%22TimePoints%22&ylab=%22Experimental%20Design%22",target = "_blank",
+                     "Template 2"))
+              ,
+              tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template2.pdf#zoom=50&view=FitH")
+            ),
+            box(tags$h3(
+              tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%221%22&a10=%5B%222%22%2C%225%22%2C%227%22%5D&a11=%5B%222%22%2C%225%22%2C%227%22%5D&a12=%5B%227%22%2C%2210%22%5D&a13=%5B%227%22%2C%2210%22%5D&a2=%5B%222%22%2C%225%22%5D&a3=%5B%222%22%2C%225%22%2C%227%22%2C%2210%22%5D&a4=%2210%22&a5=%227%22&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%223%22%2C%226%22%2C%228%22%5D&a9=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&add=13&adv=true&annt=true&auntps=11&b1=%22screening%22&b10=%22highlight%22&b11=%22highlight%22&b12=%22highlight%22&b13=%22highlight%22&b2=%22syringe%22&b3=%22draw_arrow%22&b4=%22end%22&b5=%22syringe%22&b6=%22blood_sample%22&b7=%22point_15%22&b8=%22point_16%22&b9=%22point_14%22&bbb1=%220.5%22&bbb10=%220.25%22&bbb11=%220.75%22&bbb12=%220.25%22&bbb13=%220.75%22&bbb2=%5B%220.25%22%2C%220.75%22%5D&bbb3=%5B%220.25%22%2C%220.75%22%5D&bbb4=%220.5%22&bbb5=%5B%220.25%22%2C%220.75%22%5D&bbb6=%221.5%22&bbb7=%222%22&bbb8=%222.5%22&bbb9=%223%22&c1=%22Vaccination%22&c10=%22Add%20Label%20%2310%22&c11=%22Add%20Label%20%2311%22&c12=%22%22&c13=%22%22&c2=%22%22&c3=%22Add%20Label%20%233%22&c4=%22Add%20Label%20%234%22&c5=%22%22&c6=%22Blood%20Sample%22&c7=%22RNA-Seq%22&c8=%22Flow%20Cytometry%22&c9=%22Complete%20Blood%20Cell%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=11&crop_plot_y=3.2&goButton3=34&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col10=false&rev_col11=false&rev_col12=false&rev_col13=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=true&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&shp_col1=%22black%22&shp_col10=%22red%22&shp_col11=%22blue%22&shp_col12=%22blue%22&shp_col13=%22red%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22black%22&shp_col6=%22blue%22&shp_col7=%22black%22&shp_col8=%22green%22&shp_col9=%22blue%22&shp_size1=1.5&shp_size10=1&shp_size11=1&shp_size12=1&shp_size13=1&shp_size2=1.5&shp_size3=1.5&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1.5&shp_x1=0&shp_x10=0&shp_x11=0&shp_x12=0&shp_x13=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&start=1&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day%208%22&timepts11=%22END%22&timepts2=%22Day%200%22&timepts3=%22Day%201%22&timepts4=%22Day%202%22&timepts5=%22Day%203%22&timepts6=%22Day%204%22&timepts7=%22Day%205%22&timepts8=%22Day%206%22&timepts9=%22Day%207%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22",target = "_blank",
+                     "Template 3"))
+              ,
+              tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template3.pdf#zoom=50&view=FitH")
+            )
             ,
+            box(tags$h3(
+              tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%5B%221%22%2C%222%22%5D&a10=%5B%226%22%2C%2210%22%5D&a11=%226%22&a12=%5B%222%22%2C%226%22%5D&a13=%5B%222%22%2C%226%22%5D&a14=%5B%226%22%2C%2210%22%5D&a15=%5B%226%22%2C%2210%22%5D&a2=%222%22&a3=%5B%222%22%2C%225%22%5D&a4=%2210%22&a5=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a9=%225%22&add=15&adv=true&annt=true&auntps=13&b1=%22draw_arrow%22&b10=%22draw_arrow%22&b11=%22syringe%22&b12=%22highlight%22&b13=%22highlight%22&b14=%22highlight%22&b15=%22point_1%22&b2=%22point_17%22&b3=%22line%22&b4=%22end%22&b5=%22blood_sample2%22&b6=%22RNA_Seq%22&b7=%22blood_cells%22&b8=%22flow_cytometry%22&b9=%22screening%22&bbb1=%220.5%22&bbb10=%5B%220.25%22%2C%220.75%22%5D&bbb11=%5B%220.25%22%2C%220.75%22%5D&bbb12=%2220%22&bbb13=%2219.75%22&bbb14=%2220%22&bbb15=%2220%22&bbb2=%220.5%22&bbb3=%220.5%22&bbb4=%220.5%22&bbb5=%221%22&bbb6=%221.5%22&bbb7=%222%22&bbb8=%222.5%22&bbb9=%220.5%22&c1=%22Label%20%231%22&c10=%22Label%20%2310%22&c11=%22Label%20%2311%22&c12=%22Label%20%2312%22&c13=%22Label%20%2313%22&c14=%22Label%20%2314%22&c15=%22Label%20%2315%22&c2=%22Label%20%232%22&c3=%22Label%20%233%22&c4=%22Label%20%234%22&c5=%22Label%20%235%22&c6=%22Label%20%236%22&c7=%22Label%20%237%22&c8=%22Label%20%238%22&c9=%22Label%20%239%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=11&crop_plot_y=2.7&goButton3=84&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col10=false&rev_col11=false&rev_col12=false&rev_col13=true&rev_col14=false&rev_col15=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&rs=false&shp_col1=%22black%22&shp_col10=%22black%22&shp_col11=%22black%22&shp_col12=%22green%22&shp_col13=%22red%22&shp_col14=%22red%22&shp_col15=%22blue%22&shp_col2=%22green%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22black%22&shp_col6=%22black%22&shp_col7=%22black%22&shp_col8=%22black%22&shp_col9=%22black%22&shp_size1=2&shp_size10=1&shp_size11=1.5&shp_size12=1&shp_size13=1&shp_size14=1&shp_size15=1&shp_size2=1.5&shp_size3=5&shp_size4=2&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1&shp_x1=0&shp_x10=1&shp_x11=0&shp_x12=0&shp_x13=0&shp_x14=0&shp_x15=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day360%22&timepts11=%22END%22&timepts12=%2212%22&timepts13=%2213%22&timepts2=%22Day0%22&timepts3=%22Day1%22&timepts4=%22Day7%22&timepts5=%22Day30%22&timepts6=%22Day37%22&timepts7=%22Day180%22&timepts8=%22Day187%22&timepts9=%22Day210%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22&start=1",target = "_blank",
+                     "Template 4"))
+              ,
+              tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template4.pdf#zoom=50&view=FitH")
+            ),
+            
+            
+            column(12,
+                   align="center",
+                   actionButton("help0", "Press for instructions")
+            )
+          )
+          
+        ),
+        
+        
+        tabItem(
+          tabName = "Figure",
+          
+          fluidRow(
+            
             
             column(
               12,
-              align="center",
+              offset = 3,
+              
               
               box(
-                width = 12,
-                HTML('<center>'),
-                HTML('<H1> A Figure One Web Tool</H1>'),
-                HTML('<p>Select A Template Below Or Draw From Scratch </p>') ,
-                actionButton("start", "Click Here To Draw From Scratch") ,
-                HTML('</center>')
-              ) ,
-              
-              #Templates available
-              box(tags$h3(
-                tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%5B%221%22%2C%223%22%5D&a2=%5B%221%22%2C%223%22%2C%229%22%5D&a3=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&a4=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a5=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%229%22%5D&a6=%5B%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%5D&add=6&adv=true&annt=true&auntps=9&b1=%22drug%22&b2=%22draw_arrow%22&b3=%22blood_sample%22&b4=%22point_15%22&b5=%22point_15%22&b6=%22point_15%22&bbb1=%221%22&bbb2=%221%22&bbb3=%222%22&bbb4=%223%22&bbb5=%224%22&bbb6=%225%22&c1=%22Drug%20Treatment%22&c2=%22%22&c3=%22Blood%20Sample%22&c4=%22Microarray%22&c5=%22Flow%20Cytometry%22&c6=%22CBC%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=9&crop_plot_y=5.1&goButton3=28&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rotx=true&shp_col1=%22black%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22blue%22&shp_col6=%22green%22&shp_size1=1.5&shp_size2=2.5&shp_size3=1.5&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_x1=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&start=1&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Day%200%22&timepts2=%22Day%201%22&timepts3=%22Day%202%22&timepts4=%22Day%203%22&timepts5=%22Day%204%22&timepts6=%22Day%205%22&timepts7=%22Day%206%22&timepts8=%22Day%207%22&timepts9=%22Day%208%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22&start=1",target = "_blank",
-                       "Template 1"))
-                ,
-                tags$iframe(style="height:270px; width:50%; scrolling:no; overflow:hidden",   src="./template1.pdf#zoom=50&view=FitH&toolbar=0")
                 
-              ),
-              box(tags$h3(
-                tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%221%22&a10=%221%22&a11=%2210%22&a2=%5B%222%22%2C%225%22%2C%228%22%5D&a3=%5B%222%22%2C%225%22%2C%228%22%2C%2210%22%5D&a4=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a5=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%224%22%2C%225%22%2C%226%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%222%22%2C%225%22%2C%227%22%2C%2210%22%5D&a9=%221%22&add=11&adv=true&annt=true&auntps=11&b1=%22screening%22&b10=%22blank%22&b11=%22end%22&b2=%22syringe%22&b3=%22draw_arrow%22&b4=%22blood_sample%22&b5=%22point_15%22&b6=%22point_15%22&b7=%22point_15%22&b8=%22point_15%22&b9=%22blank%22&bbb1=%220.5%22&bbb10=%220.75%22&bbb11=%220.5%22&bbb2=%5B%220.25%22%2C%220.75%22%5D&bbb3=%5B%220.25%22%2C%220.75%22%5D&bbb4=%221.25%22&bbb5=%221.75%22&bbb6=%222.25%22&bbb7=%222.75%22&bbb8=%223.25%22&bbb9=%220.25%22&c1=%22%22&c10=%22Placebo%22&c11=%22%22&c2=%22%22&c3=%22%22&c4=%22Blood%20Sample%22&c5=%22Flow%20Cytometry%22&c6=%22RNA-Seq%22&c7=%22Complete%20Blood%20Count%22&c8=%22Neutralizing%20Titers%22&c9=%22HSV-529%22&captions=%22NIAID%20Protocol%20Number%3A%20%2013-I-0172%22&crop_plot=11&crop_plot_y=3.3&goButton3=22&h=6&help0=0&help2=0&lb=true&returnpdf=false&rev_col1=false&rev_col10=false&rev_col11=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&shp_col1=%22black%22&shp_col10=%22black%22&shp_col11=%22black%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22green%22&shp_col6=%22black%22&shp_col7=%22red%22&shp_col8=%22blue%22&shp_col9=%22black%22&shp_size1=1&shp_size10=1.5&shp_size11=1.5&shp_size2=1.5&shp_size3=2&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1.5&shp_x1=0&shp_x10=0&shp_x11=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=-1&start=1&subtitle=%22%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day360%22&timepts11=%22END%22&timepts2=%22Day0%22&timepts3=%22Day1%22&timepts4=%22Day7%22&timepts5=%22Day30%22&timepts6=%22Day37%22&timepts7=%22Day60%22&timepts8=%22Day180%22&timepts9=%22Day187%22&title=%22Phase%20I%20Study%20of%20the%20Safety%20of%20a%20Replication-Defective%20Herpes%20Simplex%20Virus-2%20Vaccine%2C%20HSV529%2C%20in%20Adults%20Aged%2018%20to%2040%20Years%20With%20or%20Without%20HSV%20Infection%22&w=8&xlab=%22TimePoints%22&ylab=%22Experimental%20Design%22",target = "_blank",
-                       "Template 2"))
-                ,
-                tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template2.pdf#zoom=50&view=FitH")
-              ),
-              box(tags$h3(
-                tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%221%22&a10=%5B%222%22%2C%225%22%2C%227%22%5D&a11=%5B%222%22%2C%225%22%2C%227%22%5D&a12=%5B%227%22%2C%2210%22%5D&a13=%5B%227%22%2C%2210%22%5D&a2=%5B%222%22%2C%225%22%5D&a3=%5B%222%22%2C%225%22%2C%227%22%2C%2210%22%5D&a4=%2210%22&a5=%227%22&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%223%22%2C%226%22%2C%228%22%5D&a9=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&add=13&adv=true&annt=true&auntps=11&b1=%22screening%22&b10=%22highlight%22&b11=%22highlight%22&b12=%22highlight%22&b13=%22highlight%22&b2=%22syringe%22&b3=%22draw_arrow%22&b4=%22end%22&b5=%22syringe%22&b6=%22blood_sample%22&b7=%22point_15%22&b8=%22point_16%22&b9=%22point_14%22&bbb1=%220.5%22&bbb10=%220.25%22&bbb11=%220.75%22&bbb12=%220.25%22&bbb13=%220.75%22&bbb2=%5B%220.25%22%2C%220.75%22%5D&bbb3=%5B%220.25%22%2C%220.75%22%5D&bbb4=%220.5%22&bbb5=%5B%220.25%22%2C%220.75%22%5D&bbb6=%221.5%22&bbb7=%222%22&bbb8=%222.5%22&bbb9=%223%22&c1=%22Vaccination%22&c10=%22Add%20Label%20%2310%22&c11=%22Add%20Label%20%2311%22&c12=%22%22&c13=%22%22&c2=%22%22&c3=%22Add%20Label%20%233%22&c4=%22Add%20Label%20%234%22&c5=%22%22&c6=%22Blood%20Sample%22&c7=%22RNA-Seq%22&c8=%22Flow%20Cytometry%22&c9=%22Complete%20Blood%20Cell%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=11&crop_plot_y=3.2&goButton3=34&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col10=false&rev_col11=false&rev_col12=false&rev_col13=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=true&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&shp_col1=%22black%22&shp_col10=%22red%22&shp_col11=%22blue%22&shp_col12=%22blue%22&shp_col13=%22red%22&shp_col2=%22black%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22black%22&shp_col6=%22blue%22&shp_col7=%22black%22&shp_col8=%22green%22&shp_col9=%22blue%22&shp_size1=1.5&shp_size10=1&shp_size11=1&shp_size12=1&shp_size13=1&shp_size2=1.5&shp_size3=1.5&shp_size4=1.5&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1.5&shp_x1=0&shp_x10=0&shp_x11=0&shp_x12=0&shp_x13=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&start=1&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day%208%22&timepts11=%22END%22&timepts2=%22Day%200%22&timepts3=%22Day%201%22&timepts4=%22Day%202%22&timepts5=%22Day%203%22&timepts6=%22Day%204%22&timepts7=%22Day%205%22&timepts8=%22Day%206%22&timepts9=%22Day%207%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22",target = "_blank",
-                       "Template 3"))
-                ,
-                tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template3.pdf#zoom=50&view=FitH")
-              )
-              ,
-              box(tags$h3(
-                tags$a(href = "https://foocheung.shinyapps.io/figureone/?_inputs_&a1=%5B%221%22%2C%222%22%5D&a10=%5B%226%22%2C%2210%22%5D&a11=%226%22&a12=%5B%222%22%2C%226%22%5D&a13=%5B%222%22%2C%226%22%5D&a14=%5B%226%22%2C%2210%22%5D&a15=%5B%226%22%2C%2210%22%5D&a2=%222%22&a3=%5B%222%22%2C%225%22%5D&a4=%2210%22&a5=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a6=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a7=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a8=%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%5D&a9=%225%22&add=15&adv=true&annt=true&auntps=13&b1=%22draw_arrow%22&b10=%22draw_arrow%22&b11=%22syringe%22&b12=%22highlight%22&b13=%22highlight%22&b14=%22highlight%22&b15=%22point_1%22&b2=%22point_17%22&b3=%22line%22&b4=%22end%22&b5=%22blood_sample2%22&b6=%22RNA_Seq%22&b7=%22blood_cells%22&b8=%22flow_cytometry%22&b9=%22screening%22&bbb1=%220.5%22&bbb10=%5B%220.25%22%2C%220.75%22%5D&bbb11=%5B%220.25%22%2C%220.75%22%5D&bbb12=%2220%22&bbb13=%2219.75%22&bbb14=%2220%22&bbb15=%2220%22&bbb2=%220.5%22&bbb3=%220.5%22&bbb4=%220.5%22&bbb5=%221%22&bbb6=%221.5%22&bbb7=%222%22&bbb8=%222.5%22&bbb9=%220.5%22&c1=%22Label%20%231%22&c10=%22Label%20%2310%22&c11=%22Label%20%2311%22&c12=%22Label%20%2312%22&c13=%22Label%20%2313%22&c14=%22Label%20%2314%22&c15=%22Label%20%2315%22&c2=%22Label%20%232%22&c3=%22Label%20%233%22&c4=%22Label%20%234%22&c5=%22Label%20%235%22&c6=%22Label%20%236%22&c7=%22Label%20%237%22&c8=%22Label%20%238%22&c9=%22Label%20%239%22&captions=%22Add%20Your%20Caption%20Labels%20here%22&crop_plot=11&crop_plot_y=2.7&goButton3=84&h=6&help0=0&help2=0&lb=true&returnpdf=true&rev_col1=false&rev_col10=false&rev_col11=false&rev_col12=false&rev_col13=true&rev_col14=false&rev_col15=false&rev_col2=false&rev_col3=false&rev_col4=false&rev_col5=false&rev_col6=false&rev_col7=false&rev_col8=false&rev_col9=false&rotx=true&rs=false&shp_col1=%22black%22&shp_col10=%22black%22&shp_col11=%22black%22&shp_col12=%22green%22&shp_col13=%22red%22&shp_col14=%22red%22&shp_col15=%22blue%22&shp_col2=%22green%22&shp_col3=%22black%22&shp_col4=%22black%22&shp_col5=%22black%22&shp_col6=%22black%22&shp_col7=%22black%22&shp_col8=%22black%22&shp_col9=%22black%22&shp_size1=2&shp_size10=1&shp_size11=1.5&shp_size12=1&shp_size13=1&shp_size14=1&shp_size15=1&shp_size2=1.5&shp_size3=5&shp_size4=2&shp_size5=1.5&shp_size6=1.5&shp_size7=1.5&shp_size8=1.5&shp_size9=1&shp_x1=0&shp_x10=1&shp_x11=0&shp_x12=0&shp_x13=0&shp_x14=0&shp_x15=0&shp_x2=0&shp_x3=0&shp_x4=0&shp_x5=0&shp_x6=0&shp_x7=0&shp_x8=0&shp_x9=0&sidebarCollapsed=false&sidebarItemExpanded=null&sp_lab=0&subtitle=%22Add%20Your%20Subtitle%20Labels%20here%22&tabs=%22Figure%22&timepts1=%22Screening%22&timepts10=%22Day360%22&timepts11=%22END%22&timepts12=%2212%22&timepts13=%2213%22&timepts2=%22Day0%22&timepts3=%22Day1%22&timepts4=%22Day7%22&timepts5=%22Day30%22&timepts6=%22Day37%22&timepts7=%22Day180%22&timepts8=%22Day187%22&timepts9=%22Day210%22&title=%22Add%20Your%20Title%20Here%22&w=8&xlab=%22Add%20Your%20X-axis%20Labels%20here%22&ylab=%22Add%20Your%20Y-axis%20Labels%20here%22&start=1",target = "_blank",
-                       "Template 4"))
-                ,
-                tags$iframe(style="height:270px; width:50%; overflow:hidden",   src="./template4.pdf#zoom=50&view=FitH")
-              ),
+                
+                uiOutput('web3')
+                
+              ) 
               
               
-              column(12,
-                     align="center",
-                     actionButton("help0", "Press for instructions")
-              )
             )
             
           ),
           
-          
-          tabItem(
-            tabName = "Figure",
+          fluidRow(
+            introjsUI(),
+            title = "",
+            id = "tabset2",
             
-            fluidRow(
-              
-              
-              column(
-                12,
-                offset = 3,
-                
-                 
-                box(
-                  
-                  
-                  uiOutput('web3')
-                  
-                ) 
-                
-                
-              )
-              
-            ),
+            width = 12,
             
-            fluidRow(
-              introjsUI(),
-              title = "",
-              id = "tabset2",
+            align="center",
+            ##Interactive help
+            box(
+              
+              useShinyjs(),
+              
               
               width = 12,
               
-              align="center",
-               ##Interactive help
-              box(
-                
-                useShinyjs(),
-                
-                
-                  width = 12,
-                
-                id="t2",
-                id="t3",
-                sliderInput(
-                  "auntps", 
-                  HTML(" <b> <i><h4><i class='glyphicon glyphicon-time fa-2x' <i class='glyphicon glyphicon-time fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i>  Select Number of TimePoints</h4>"),
-                  min = 0, max = 25,
-                  value = 10),
-                actionButton("help2", "Press for instructions",
-                             icon("info-sign", lib = "glyphicon"), 
-                             style="color: #fff; background-color: #FA9900; border-color: #2e6da4") 
-             
-                
-              ),                                                       
+              id="t2",
+              id="t3",
+              sliderInput(
+                "auntps", 
+                HTML(" <b> <i><h4><i class='glyphicon glyphicon-time fa-2x' <i class='glyphicon glyphicon-time fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i>  Select Number of TimePoints</h4>"),
+                min = 0, max = 25,
+                value = 10),
+              actionButton("help2", "Press for instructions",
+                           icon("info-sign", lib = "glyphicon"), 
+                           style="color: #fff; background-color: #FA9900; border-color: #2e6da4") 
               
               
-              # Add content to diagram
-              column(
-                
-                width=12,
-                offset=0.5,
-                
-                conditionalPanel(
-                  condition =   "input.auntps > 0",  
-                  align="left",
-                  actionButton("add", "Add Item", icon("plus", lib = "glyphicon"), 
-                               style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
-                  
-                )
+            ),                                                       
+            
+            
+            # Add content to diagram
+            column(
+              
+              width=12,
+              offset=0.5,
+              
+              conditionalPanel(
+                condition =   "input.auntps > 0",  
+                align="left",
+                actionButton("add", "Add Item", icon("plus", lib = "glyphicon"), 
+                             style="color: #fff; background-color: #337ab7; border-color: #2e6da4")
                 
               )
+              
             )
-            
           )
+          
         )
       )
-      )
-
     )
+      )
+)
+  
 }
 
 
 
 shinyApp(
-#bookmark drawing
+  #bookmark drawing
   ui,enableBookmarking = "url",
   server = function(input, output,session) {
     addClass(selector = "body", class = "sidebar-collapse")
@@ -338,11 +338,11 @@ shinyApp(
         removeClass(selector = "body", class = "sidebar-collapse")
         
       }
-     
+      
       session$doBookmark()  
       
     })
-   
+    
     #update url with the features of the drawing
     onBookmarked(function(url) {
       updateQueryString(url)
@@ -413,14 +413,14 @@ shinyApp(
     #Display how many timepoints bering used
     output$result1 <- renderUI({
       req(input$auntps)
-     
+      
       
       
       HTML(paste("<center><i> <i class='glyphicon glyphicon-time fa-1x' style='color: #fff;  background-color: #FA9900; border-color: #2e6da'></i> <b> ",
                  "<font color='red'>", input$auntps,"</font>",
                  'TimePoints Selected', 
                  sep=' '))
-         
+      
       
     })
     #Button to crop the drawing
@@ -439,7 +439,7 @@ shinyApp(
     
     
     
- #List of groups for drop down menu   
+    #List of groups for drop down menu   
     
     drug_list<-c("drug")
     vacc_list<-c("syringe")
@@ -449,7 +449,7 @@ shinyApp(
     transcriptomics_list<-c("chip","RNA_Seq")
     proteomics_list<-c("proteomics", "phage",  "heatmap" )
     cells_list<-c("flow_cytometry","flow_cytometry2","blood_cells" )
-     misc_list<-c("blank","tick", "cross","insert_text")
+    misc_list<-c("blank","tick", "cross","insert_text")
     shapes_list<-c( "point_1","point_2","point_3","point_4","point_5","point_6","point_7","point_8","point_9","point_10","point_11","point_12","point_13","point_14","point_15","point_16", "point_17","point_24")
     tool_list<-c("line","draw_arrow", "draw_arrow2", "screening","crossover","end","highlight")
     
@@ -467,7 +467,7 @@ shinyApp(
     
     
     tgp<-reactive({
-    
+      
       myData <- dataM()$data
       tps<- as.data.frame(table(myData$TimePoint))
       tpg1<- tps %>% filter(Freq > 0) %>% arrange(desc(Freq) )
@@ -485,12 +485,12 @@ shinyApp(
       tagList(
         
         plotOutput('plot2'
-           
+                   
         )
         
       )
       
-    
+      
       
     }
     )
@@ -508,7 +508,7 @@ shinyApp(
       
       
       
-
+      
       insertUI(
         
         selector = "#add",
@@ -564,7 +564,7 @@ shinyApp(
     }"      ))
               )
               
-            )),
+              )),
             selectizeInput(
               
               paste0('bbb', id  ) , 
@@ -598,10 +598,10 @@ shinyApp(
             
             
             
-          )
-        )
+              )
+              )
         
-      )
+          )
     }
     
     
@@ -855,11 +855,11 @@ shinyApp(
       
       isolate ({
         
-
+        
         #set up canvas
         blank = sample("./www/blank.png")
         
-      
+        
         p <-
           ggplot(
             
@@ -881,17 +881,17 @@ shinyApp(
             panel.grid.minor.y = element_blank(),
             panel.grid.major.y =element_blank(),
             
-           
+            
             
             axis.title.x = element_text(margin = margin(t = 20)) ,
             axis.text.x.top = element_text(vjust = 0.5)
             
           )  
         
-      
+        
         
         if (input$rotx  >0 ){
-       
+          
           p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 0, vjust = 0))
         }
         
@@ -905,7 +905,7 @@ shinyApp(
                caption = wrapper(input$captions, width = 100), 
                x = input$xlab, y = input$ylab) 
         
-       
+        
         
         
         #Shapes in www folder
@@ -995,7 +995,7 @@ shinyApp(
         point_17= sample("./www/point_17.png")
         point_24= sample("./www/point_24.png")
         
-      
+        
         
         
         #parse input to create drawing
@@ -1008,16 +1008,16 @@ shinyApp(
         
         if (input$add == 0){
           
-         
+          
         }
         else  if (input$add > 0){
           
           
           withProgress(message = 'Parsing Data', value = 0, {
             n<-input$add
-           
+            
             foreach (i=1:input$add, .combine=c) %do% { 
-             
+              
               
               
               
@@ -1025,7 +1025,7 @@ shinyApp(
               ee<-eval(parse(text = paste0('input$b', i,sep="")))
               
               tt<-paste0('input$a',i,sep="")
-             
+              
               ttt3<-paste0('input$bbb',i,sep="")
               
               cnt <- as.numeric(as.character(c(eval(parse(text=ttt3)))))  * 14
@@ -1037,7 +1037,7 @@ shinyApp(
               
               
               
-             
+              
               
               if (is.null(ee))
                 req(eval(as.name(ee)) > 0 )
@@ -1050,7 +1050,7 @@ shinyApp(
               if (ee == 'insert_text'){ 
                 df<-  data.frame(x=factor(as.character(c(eval(parse(text=tt))))), y=cnt )  
                 foreach (i=1:length(df$x), .combine=c) %do% { 
-                 
+                  
                   p <- p +     annotate("label", x=as.numeric(as.character(df$x[i])), y=cnt , label=eval(parse(text=ff)), color = eval(parse(text=sc)), fontface = "bold" )
                   
                 }
@@ -1177,7 +1177,7 @@ shinyApp(
                   p<- p + 
                     annotate(geom="segment",x=as.numeric(as.character(df$x[i]))+eval(parse(text=ss))/10, color=eval(parse(text=sc)), size=1 , xend=as.numeric(as.character(df$x[i]))+0.7,
                              y=cnt,yend=cnt + eval(parse(text=si)) ,arrow = arrow(length = unit(0.25, "cm"))) 
-                                   
+                  
                 }
               }
               
@@ -1191,20 +1191,20 @@ shinyApp(
                   
                   
                   
-               
+                  
                   
                   p<- p + 
                     
                     
-    
-                  
-                  annotate(geom="segment",
-                           x=as.numeric(as.character(df$x[i]))-0.2 , 
-                           color=eval(parse(text=sc)), size=1 , 
-                           xend=as.numeric(as.character(df$x[i])) -0.8 , 
-                           y= cnt + 0.7 +eval(parse(text=ss))*2 ,
-                           yend=cnt + eval(parse(text=si))*7 -1.6 ,
-                           arrow = arrow(length = unit(0.25, "cm"))) +
+                    
+                    
+                    annotate(geom="segment",
+                             x=as.numeric(as.character(df$x[i]))-0.2 , 
+                             color=eval(parse(text=sc)), size=1 , 
+                             xend=as.numeric(as.character(df$x[i])) -0.8 , 
+                             y= cnt + 0.7 +eval(parse(text=ss))*2 ,
+                             yend=cnt + eval(parse(text=si))*7 -1.6 ,
+                             arrow = arrow(length = unit(0.25, "cm"))) +
                     
                     
                     annotate(geom="text", x=-2, y=cnt, label=eval(parse(text=ff)) ,color="black", parse=FALSE, fontface = "bold")
@@ -1277,8 +1277,8 @@ shinyApp(
                     
                     
                     
-                   
-                  annotate(geom="text", x=0.1, y=cnt, label=eval(parse(text=ff)) ,color="black", parse=FALSE, fontface=2)
+                    
+                    annotate(geom="text", x=0.1, y=cnt, label=eval(parse(text=ff)) ,color="black", parse=FALSE, fontface=2)
                   
                   
                 }
@@ -1297,7 +1297,7 @@ shinyApp(
                 
                 
                 foreach (i=1:length(x), .combine=c) %do% { 
-           
+                  
                   foreach (j=1:length(cnt), .combine=c) %do% { 
                     
                     
@@ -1333,7 +1333,7 @@ shinyApp(
                       
                     }
                     
-                   
+                    
                     p<- p + 
                       
                       geom_image(
@@ -1341,14 +1341,14 @@ shinyApp(
                                         y=cnt[j]), aes(x=x,y=y) , image=eval(parse(text=sim)) ,size=eval(parse(text=si))/40) 
                     
                     
-               
+                    
                     
                     
                   }
                   
                   
                 }
-                  p<- p+ annotate(geom="segment",x=1,xend=input$auntps,y=cnt,yend=cnt,color="black", alpha=0.05,linetype="dashed" ) +
+                p<- p+ annotate(geom="segment",x=1,xend=input$auntps,y=cnt,yend=cnt,color="black", alpha=0.05,linetype="dashed" ) +
                   annotate(geom="text", x=-2-input$sp_lab, y=cnt, label=eval(parse(text=ff)),color="black", parse=FALSE, fontface=2)
                 
                 
@@ -1372,7 +1372,7 @@ shinyApp(
                     
                     p<- p + 
                       annotate(geom="segment",
-                             
+                               
                                x=as.numeric(as.character(x[i]))+eval(parse(text=si))/30*2, 
                                color=eval(parse(text=sc)), size=1,
                                xend=as.numeric(as.character(x[i+1]))-eval(parse(text=si))/30*2,
@@ -1425,7 +1425,7 @@ shinyApp(
                 foreach (i=1:length(x), .combine=c) %do% { 
                   foreach (j=1:length(cnt), .combine=c) %do% { 
                     
-                
+                    
                     p<- p + 
                       annotate(geom="point",
                                x=as.numeric(as.character(x[i])), 
@@ -1555,7 +1555,7 @@ shinyApp(
         
         p<- p+   scale_y_reverse(limits=c(end_rec,0  ) )
         
-       
+        
         
         aval<-list()
         for(i in 1:input$auntps) {
@@ -1575,7 +1575,7 @@ shinyApp(
         
         
         
-              p <-p +  scale_x_discrete(labels=aval, position = "top")  +  coord_cartesian(xlim=c(-3.5-input$sp_lab,input$crop_plot,expand = FALSE), ylim=c(3, input$crop_plot_y*15))   
+        p <-p +  scale_x_discrete(labels=aval, position = "top")  +  coord_cartesian(xlim=c(-3.5-input$sp_lab,input$crop_plot,expand = FALSE), ylim=c(3, input$crop_plot_y*15))   
         
         
         withProgress(message = 'Printing plot', value = 0, {
@@ -1589,7 +1589,7 @@ shinyApp(
       if(input$returnpdf){
         pdf("plot.pdf", width=as.numeric(input$w), height=as.numeric(input$h))
         print(p)
-           
+        
         dev.off()
       }
       
@@ -1622,7 +1622,7 @@ shinyApp(
       )
     })
     
-
+    
     
     
     #download pdf file
@@ -1634,7 +1634,7 @@ shinyApp(
       }
     )
     
-
+    
     
     
     
