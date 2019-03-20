@@ -143,7 +143,7 @@ ui <- function(request) {
     )
       
       
-    )
+    ),
     
         dashboardBody(
       
