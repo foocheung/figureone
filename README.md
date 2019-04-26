@@ -5,7 +5,7 @@ A Figure One Web Tool
 
 A user-friendly point and click open source, a platform-independent software tool that aids the graphical representation of experimental studies. Generates schematic diagrams for oral presentations and publications.
 
-Instructions to access this webtool from your local machine can be found here:
+Instructions to deploy this webtool from your local machine can be found here:
 https://github.com/foocheung/figureone/blob/master/README_deploy.txt
 
 
