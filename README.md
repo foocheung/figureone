@@ -1,5 +1,8 @@
 # A Figure One Web Tool
 
+# MS Version May 2019
+This software is currently undergoing "revisions prior to acceptance for publication"
+
 
 A Figure One Web Tool
 
