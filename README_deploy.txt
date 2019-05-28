@@ -126,3 +126,9 @@ Step 7: Start Shiny-Server
 
 $ start shiny-server  
 Now, the figureone app is available at http://IPAddressOfTheServer:3838/figureone/.
+
+(A temporary test site ia available for those would like to test the web app
+https://foocheung.shinyapps.io/figureone/
+Username: user1
+Password:
+)
