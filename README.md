@@ -6,19 +6,11 @@ MS Version May 2019
 
 This software is currently undergoing Peer Review and requires "revisions prior to acceptance for publication"
 
-(A temporary test site is available for Reviewers who would like to test the web app
-https://foocheung.shinyapps.io/figureone/<BR>
-Username: user1<BR>
-Password:<BR>
-A more permanent url is pending.
-)
-
-
 # A Figure One Web Tool
 
 A user-friendly point and click open source, a platform-independent software tool that aids the graphical representation of experimental studies. Generates schematic diagrams for oral presentations and publications.
 
-Instructions to deploy this webtool from your local machine can be found here:
+Instructions to deploy this webtool from your local machine and a temporary test site is available for Reviewers who would like to test the web app can be found here:
 https://github.com/foocheung/figureone/blob/master/README_deploy.txt
 
 
