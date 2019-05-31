@@ -1,3 +1,11 @@
+****************************************************************************
+A temporary test site ia available for those would like to test the web app
+https://foocheung.shinyapps.io/figureone/
+Username: user1
+Password:
+A more permananent URL is pending.
+****************************************************************************
+
 Instructions to deploy Figure One Web tool
 
 Launch Figure One web tool directly from R and GitHub
@@ -12,7 +20,7 @@ Step 2: Install the R Shiny package and other packages required by the web tool
 
 Start an R session using RStudio and run these lines:
 
-# Make sure the ollowing packages are installed (from CRAN or bioconductor)
+# Make sure the following packages are installed (from CRAN or bioconductor)
 
 library(Biobase)
 library(rintrojs)
@@ -127,8 +135,3 @@ Step 7: Start Shiny-Server
 $ start shiny-server  
 Now, the figureone app is available at http://IPAddressOfTheServer:3838/figureone/.
 
-(A temporary test site ia available for those would like to test the web app
-https://foocheung.shinyapps.io/figureone/
-Username: user1
-Password:
-)
