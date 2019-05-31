@@ -6,6 +6,12 @@ MS Version May 2019
 
 This software is currently undergoing "revisions prior to acceptance for publication"
 
+(A temporary test site ia available for Reviewers who would like to test the web app
+https://foocheung.shinyapps.io/figureone/
+Username: user1
+Password:
+)
+
 
 # A Figure One Web Tool
 
