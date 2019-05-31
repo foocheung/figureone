@@ -6,8 +6,6 @@ MS Version May 2019
 
 This software is currently undergoing Peer Review and requires "revisions prior to acceptance for publication"
 
-# A Figure One Web Tool
-
 A user-friendly point and click open source, a platform-independent software tool that aids the graphical representation of experimental studies. Generates schematic diagrams for oral presentations and publications.
 
 Instructions to deploy this webtool from your local machine and a temporary test site is available for Reviewers who would like to test the web app can be found here:
