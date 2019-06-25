@@ -1,5 +1,8 @@
 # A Figure One Web Tool
 
+# Update
+Version 0.1 June 2019 Example Output
+<img src="https://github.com/foocheung/figureone/blob/master/myplot - 2019-06-25T171209.339.png">
 
 # Update
 MS Version May 2019
