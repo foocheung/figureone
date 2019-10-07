@@ -1,5 +1,8 @@
 # A Figure One Web Tool
 
+# Help or Contact the author
+If you need help send me email foocheung@yahoo.com or check out the paper here: https://openresearchsoftware.metajnl.com/ when it gets published.
+
 # Update
 Version 0.1 June 2019 Example Output
 <img src="https://github.com/foocheung/figureone/blob/master/myplot - 2019-06-25T171209.339.png">
