@@ -1,6 +1,6 @@
 # A Figure One Web Tool
 
-# Help or Contact the author
+# Contact the author
 If you need help send me email foocheung@yahoo.com or check out the paper here: https://openresearchsoftware.metajnl.com/ when it gets published.
 
 # Update
